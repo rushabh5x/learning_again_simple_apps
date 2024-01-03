@@ -94,7 +94,7 @@
             })
                 .then(text => {
                     document.getElementById("fileName").innerHTML = text1;
-                    document.getElementById("fileContent").innerHTML = text || "";
+                    document.getElementById("fileContent").innerHTML = text || "File is empty";
                 })
                 .catch((e) => console.error(e));
         }
