@@ -19,17 +19,12 @@ function readnumber() {
 }
 
 function readTextFile(file) {
-  var text1 = "file : " + file;
-  document.getElementById("fileContent").innerHTML = "text";
+  let text1 = "file : " + file;
   fetch(file)
-    .then((res) => {
-      if (res.ok) return res.text();
-      else text1 = "Could not find file " + file;
-    })
+    .then((res) => res.ok ? res.text() : "Could not find file " + file)
     .then((text) => {
       document.getElementById("fileName").innerHTML = text1;
-      document.getElementById("fileContent").innerHTML =
-        text || "File is empty";
+      document.getElementById("fileContent").innerHTML = text || "File is empty";
     })
     .catch((e) => console.error(e));
 }
