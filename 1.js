@@ -24,7 +24,7 @@ function readTextFile(file) {
     .then((res) => res.ok ? res.text() : "Could not find file " + file)
     .then((text) => {
       document.getElementById("fileName").innerHTML = text1;
-      document.getElementById("fileContent").innerHTML = text || "File is empty";
+      //document.getElementById("fileContent").innerHTML = text || "File is empty";
     })
     .catch((e) => console.error(e));//alert("Could not find file " + file));
 }
