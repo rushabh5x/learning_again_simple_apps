@@ -26,7 +26,7 @@ function readTextFile(file) {
       document.getElementById("fileName").innerHTML = text1;
       document.getElementById("fileContent").innerHTML = text || "File is empty";
     })
-    .catch((e) => console.error(e));
+    .catch((e) => console.error(e));//alert("Could not find file " + file));
 }
 
 function setDate(d1) {
