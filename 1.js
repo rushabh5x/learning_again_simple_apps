@@ -35,7 +35,7 @@ function readnumber() {
         if (response.ok) {
           return response.text();
         } else {
-          throw new Error(response.statusText);
+          return "File is empty";
         }
       })
       .then(function(data) {
