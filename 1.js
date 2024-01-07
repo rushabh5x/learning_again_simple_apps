@@ -1,4 +1,5 @@
 setDate(Date());
+document.getElementById("fileContent").hidden = true;
 
 var input = document.getElementById("dateInput");
 input.addEventListener("keypress", function (event) {
@@ -29,17 +30,23 @@ function readnumber() {
   
   function readTextFile(file) {
     let text1 = "file : " + file;
-    try {
-      let x = fetch(file);
-      let y =x.text();
-      document.getElementById("fileName").innerHTML = text1;
-      document.getElementById("fileContent").innerHTML = y;
-    }catch(err){
-      document.getElementById("fileName").innerHTML = text1 + " not found";
-      document.getElementById("fileContent").innerHTML = "File is empty";
-    }
+    fetch(file)
+      .then(function(response) {
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then(function(data) {
+        document.getElementById("fileName").innerHTML = text1;
+        document.getElementById("fileContent").hidden = false;
+        document.getElementById("fileContent").innerHTML = data;
+      })
+      .catch(function(err) {
+        document.getElementById("fileName").innerHTML = text1 + " not found";
+      });
   }
-
 
 function setDate(d1) {
   var date = new Date(d1);
