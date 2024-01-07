@@ -18,16 +18,28 @@ function readnumber() {
   document.getElementById("header").innerHTML = "Day " + input;
 }
 
-function readTextFile(file) {
+/*function readTextFile(file) {
   let text1 = "file : " + file;
-  fetch(file)
-    .then((res) => res.ok ? res.text() : "Could not find file " + file)
-    .then((text) => {
+  readFile(file, 'utf8', (err, data) => {
+    if (err) throw err;
+    document.getElementById("fileName").innerHTML = text1;
+    document.getElementById("fileContent").innerHTML = data || "File is empty";
+    });
+};*/
+  
+  function readTextFile(file) {
+    let text1 = "file : " + file;
+    try {
+      let x = fetch(file);
+      let y =x.text();
       document.getElementById("fileName").innerHTML = text1;
-      //document.getElementById("fileContent").innerHTML = text || "File is empty";
-    })
-    .catch((e) => console.error(e));//alert("Could not find file " + file));
-}
+      document.getElementById("fileContent").innerHTML = y;
+    }catch(err){
+      document.getElementById("fileName").innerHTML = text1 + " not found";
+      document.getElementById("fileContent").innerHTML = "File is empty";
+    }
+  }
+
 
 function setDate(d1) {
   var date = new Date(d1);
