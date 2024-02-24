@@ -12,7 +12,7 @@ var date = new Date();
 
 function readnumber() {
   var input = document.getElementById("fileinput").value;
-  readTextFile(input + ".txt");
+  readTextFile("..\\files\\" + input + ".txt");
   var enteredDate = new Date("1996-08-21");
   enteredDate.setDate(enteredDate.getDate() + Number(input));
   setDate(enteredDate);
@@ -29,7 +29,7 @@ function readnumber() {
 };*/
   
   function readTextFile(file) {
-    let text1 = "file : " + file;
+    let text1 = "file found";
     fetch(file)
       .then(function(response) {
         if (response.ok) {
