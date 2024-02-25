@@ -39,7 +39,7 @@ function readnumber() {
         }
       })
       .then(function(data) {
-        if (data == 0) {
+        if (data == 0 || data[0] == '<') {
           document.getElementById("fileName").innerHTML = text1 + " not found"
           document.getElementById("fileContent").hidden = true;
           document.getElementById("fileContent").innerHTML = null;
