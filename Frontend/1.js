@@ -12,7 +12,7 @@ var date = new Date();
 
 function readnumber() {
   var input = document.getElementById("fileinput").value;
-  readTextFile("..\\files\\" + input + ".txt");
+  readTextFile(input);
   var enteredDate = new Date("1996-08-21");
   enteredDate.setDate(enteredDate.getDate() + Number(input));
   setDate(enteredDate);
@@ -29,22 +29,25 @@ function readnumber() {
 };*/
   
   function readTextFile(file) {
-    let text1 = "file found";
-    fetch(file)
+    let text1 = file;
+    fetch("..\\files\\" + file + ".txt")
       .then(function(response) {
         if (response.ok) {
           return response.text();
         } else {
-          return "File is empty";
+          return 0;
         }
       })
       .then(function(data) {
-        document.getElementById("fileName").innerHTML = text1;
+        if (data == 0) {
+          document.getElementById("fileName").innerHTML = text1 + " not found"
+          document.getElementById("fileContent").hidden = true;
+          document.getElementById("fileContent").innerHTML = null;
+          return
+        }
+        //document.getElementById("fileName").innerHTML = text1 + " found";
         document.getElementById("fileContent").hidden = false;
         document.getElementById("fileContent").innerHTML = data;
-      })
-      .catch(function(err) {
-        document.getElementById("fileName").innerHTML = text1 + " not found";
       });
   }
 
@@ -97,5 +100,5 @@ function calculateDay() {
 
   document.getElementById("fileinput").value = daysDifference;
   document.getElementById("header").innerHTML = "Day " + daysDifference;
-  readTextFile(daysDifference + ".txt");
+  readTextFile(daysDifference);
 }
