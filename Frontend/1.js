@@ -15,9 +15,9 @@ function readnumber() {
   readTextFile(input);
   var enteredDate = new Date("1996-08-21");
   enteredDate.setDate(enteredDate.getDate() + Number(input));
-  setDate(enteredDate);
+  setDate(enteredDate); 
   document.getElementById("header").innerHTML = "Day " + input;
-}
+}x
 
 /*function readTextFile(file) {
   let text1 = "file : " + file;
