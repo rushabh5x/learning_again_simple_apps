@@ -15,18 +15,10 @@ function readnumber() {
   readTextFile(input);
   var enteredDate = new Date("1996-08-21");
   enteredDate.setDate(enteredDate.getDate() + Number(input));
-  setDate(enteredDate); 
+  setDate(enteredDate);
   document.getElementById("header").innerHTML = "Day " + input;
 }x
 
-/*function readTextFile(file) {
-  let text1 = "file : " + file;
-  readFile(file, 'utf8', (err, data) => {
-    if (err) throw err;
-    document.getElementById("fileName").innerHTML = text1;
-    document.getElementById("fileContent").innerHTML = data || "File is empty";
-    });
-};*/
   
   function readTextFile(file) {
     let text1 = file;
@@ -45,7 +37,6 @@ function readnumber() {
           document.getElementById("fileContent").innerHTML = null;
           return
         }
-        //document.getElementById("fileName").innerHTML = text1 + " found";
         document.getElementById("fileContent").hidden = false;
         document.getElementById("fileContent").innerHTML = data;
       });
@@ -86,18 +77,6 @@ function calculateDay() {
   var daysDifference = Math.floor(
     (enteredDate - targetDate) / (1000 * 60 * 60 * 24)
   );
-
-  document.getElementById("result").innerHTML =
-    "The day difference between 21 August 1996 and " +
-    enteredDate.getDate() +
-    " " +
-    monthNames[enteredDate.getMonth()] +
-    " " +
-    enteredDate.getFullYear() +
-    " is: " +
-    daysDifference +
-    " days.";
-
   document.getElementById("fileinput").value = daysDifference;
   document.getElementById("header").innerHTML = "Day " + daysDifference;
   readTextFile(daysDifference);
